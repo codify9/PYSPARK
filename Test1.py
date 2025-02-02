@@ -6,7 +6,14 @@ df = pd.read_csv('test.csv')
 
 from pyspark.sql import SparkSession
 
-spark = SparkSession.builder.appName('Practice').getOrCreate()
+spark = SparkSession.builder.appName('Dataframe').getOrCreate()
 
-print(spark.version)
-spark.stop()
+# df_pyspark = spark.read.option('header', 'true').csv('test.csv', inferSchema = True)
+
+df_pyspark = spark.read.csv('test.csv', header=True, inferSchema=True)
+df_pyspark.show()
+df_pyspark.printSchema()
+
+
+
+

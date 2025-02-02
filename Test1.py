@@ -49,16 +49,6 @@ df_pyspark.printSchema()
 
 # Filling the Null Values by Imputer Function
 
-# from pyspark.ml.feature import Imputer
-
-# imputer = Imputer(
-#     inputCols=['age', 'Experience', 'Salary'],
-#     outputCols=["{}_imputed".format(c) for c in ['age', 'Experience', 'Salary']]
-#     ).setStrategy('mean')
-
-# imputer.fit(df_pyspark).transform(df_pyspark).show()
-
-
 from pyspark.ml.feature import Imputer
 
 imputer = Imputer(

@@ -14,8 +14,8 @@ spark = SparkSession.builder.appName('Dataframe').getOrCreate()
 # Type 2 of reading data
 df_pyspark = spark.read.csv('test.csv', header=True, inferSchema=True)
 
-# df_pyspark.show()
-# df_pyspark.printSchema()
+df_pyspark.show()
+df_pyspark.printSchema()
 
 # df_pyspark.describe().show()
 
@@ -33,13 +33,38 @@ df_pyspark = spark.read.csv('test.csv', header=True, inferSchema=True)
 
 # Drop Rows where Null is present
 
-df_pyspark.na.drop().show()
+# df_pyspark.na.drop().show()
 
 # Drop Rows on How
 
-df_pyspark.na.drop(how="all").show()
+# df_pyspark.na.drop(how="all").show()
 
 # Drop Rows on subset
 
-df_pyspark.na.drop(how="all", subset=['Name']).show()
+# df_pyspark.na.drop(how="all", subset=['Name']).show()
+
+# Filling the Null Values.
+
+# df_pyspark.na.fill('Na', ['Name', 'age']).show()
+
+# Filling the Null Values by Imputer Function
+
+# from pyspark.ml.feature import Imputer
+
+# imputer = Imputer(
+#     inputCols=['age', 'Experience', 'Salary'],
+#     outputCols=["{}_imputed".format(c) for c in ['age', 'Experience', 'Salary']]
+#     ).setStrategy('mean')
+
+# imputer.fit(df_pyspark).transform(df_pyspark).show()
+
+
+from pyspark.ml.feature import Imputer
+
+imputer = Imputer(
+    inputCols=['age', 'Experience', 'Salary'],
+    outputCols=["{}_imputed".format(c) for c in ['age', 'Experience', 'Salary']]  
+).setStrategy('mean')
+
+imputer.fit(df_pyspark).transform(df_pyspark).show()
 

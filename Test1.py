@@ -14,8 +14,8 @@ spark = SparkSession.builder.appName('Dataframe').getOrCreate()
 # Type 2 of reading data
 df_pyspark = spark.read.csv('test.csv', header=True, inferSchema=True)
 
-df_pyspark.show()
-df_pyspark.printSchema()
+# df_pyspark.show()
+# df_pyspark.printSchema()
 
 # df_pyspark.describe().show()
 
@@ -49,12 +49,17 @@ df_pyspark.printSchema()
 
 # Filling the Null Values by Imputer Function
 
-from pyspark.ml.feature import Imputer
+# from pyspark.ml.feature import Imputer
 
-imputer = Imputer(
-    inputCols=['age', 'Experience', 'Salary'],
-    outputCols=["{}_imputed".format(c) for c in ['age', 'Experience', 'Salary']]  
-).setStrategy('mean')
+# imputer = Imputer(
+#     inputCols=['age', 'Experience', 'Salary'],
+#     outputCols=["{}_imputed".format(c) for c in ['age', 'Experience', 'Salary']]  
+# ).setStrategy('mean')
 
-imputer.fit(df_pyspark).transform(df_pyspark).show()
+# imputer.fit(df_pyspark).transform(df_pyspark).show()
 
+# Filtering Data
+
+# print name of employees whose experience is less then 14.
+
+df_pyspark.filter('Experience <= 14').select(['Name', 'age']).show()

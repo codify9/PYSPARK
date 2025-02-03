@@ -62,4 +62,9 @@ df_pyspark = spark.read.csv('test.csv', header=True, inferSchema=True)
 
 # print name of employees whose experience is less then 14.
 
-df_pyspark.filter('Experience <= 14').select(['Name', 'age']).show()
+# df_pyspark.filter('Experience <= 14').select(['Name', 'age']).show()
+
+df_pyspark3 = spark.read.csv('test3.csv', header=True, inferSchema=True)
+
+# df_pyspark3.show()
+

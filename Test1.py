@@ -66,5 +66,5 @@ df_pyspark = spark.read.csv('test.csv', header=True, inferSchema=True)
 
 df_pyspark3 = spark.read.csv('test3.csv', header=True, inferSchema=True)
 
-# df_pyspark3.show()
+df_pyspark3.show()
 

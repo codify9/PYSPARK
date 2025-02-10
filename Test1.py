@@ -66,5 +66,5 @@ df_pyspark.filter('Experience <= 14').select(['Name', 'age']).show()
 
 df_pyspark3 = spark.read.csv('test3.csv', header=True, inferSchema=True)
 
-df_pyspark3.show()
+# df_pyspark3.show()
 
